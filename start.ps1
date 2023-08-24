@@ -33,14 +33,15 @@ while ($true) {
         }
         else {
             "Processing " + $pdf.Name
-            gs -sOutputfile=$tiff -q -dNOPAUSE -sDEVICE=tiffgray -r200x200 $pdf.FullName -c quit
+            $param = "-sOutputFile=$tiff"
+            gs -q  -dNOPAUSE -sDEVICE=tiffgray $param -r200x200 $pdf.FullName -c quit
         }
     }
     Clear-Host
     Write-Host "Lösche alle pdf Dateien"
-    Remove-Item $RECHNUNGEN/*.pdf
+    # Remove-Item $RECHNUNGEN/*.pdf
     Write-Host "Verschiebe alle Tiff Dateien"
-    Move-Item /y $RECHNUNGEN/*.tiff $DESTINATION
+    # Move-Item /y $RECHNUNGEN/*.tiff $DESTINATION
     $timeout = 1 # Timeout in Stunden
     $timeout = $timeout * 60 * 60 # Timeout in Sekunden
     Timeout /T $timeout
