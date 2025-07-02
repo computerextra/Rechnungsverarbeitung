@@ -43,7 +43,7 @@ while ($true) {
         Write-Host "Verschiebe alle Tiff Dateien"
         Move-Item -Path $RECHNUNGEN/*.tiff -Destination $DESTINATION
     }
-    $timeout = 1 # Timeout in Stunden
+    $timeout = 1 / 2 # Timeout in Stunden
     $timeout = $timeout * 60 * 60 # Timeout in Sekunden
     Timeout /T $timeout
 }
